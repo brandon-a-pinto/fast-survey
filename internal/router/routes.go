@@ -1,14 +1,14 @@
 package router
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/brandon-a-pinto/fast-survey/internal/handler"
+	"github.com/gofiber/fiber/v2"
+)
 
 func routes(a *fiber.App) {
+	users := handler.UserHandler
 	v1 := a.Group("/api/v1")
 	{
-		v1.Get("/", func(c *fiber.Ctx) error {
-			return c.JSON(fiber.Map{
-				"msg": "Hello World",
-			})
-		})
+		v1.Post("/users", users.HandlePostUser)
 	}
 }
