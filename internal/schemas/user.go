@@ -16,3 +16,8 @@ type CreateUserParams struct {
 	Password             string `json:"password"`
 	PasswordConfirmation string `json:"passwordConfirmation"`
 }
+
+type AuthParams struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}

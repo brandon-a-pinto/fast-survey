@@ -9,6 +9,7 @@ func routes(a *fiber.App) {
 	users := handler.UserHandler
 	v1 := a.Group("/api/v1")
 	{
+		v1.Post("/auth", users.HandleAuthUser)
 		v1.Post("/users", users.HandlePostUser)
 	}
 }
