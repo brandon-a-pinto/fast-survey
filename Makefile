@@ -4,7 +4,6 @@ build:
 
 prepare:
 	@cp -r ./examples/.env .
-	@go mod tidy
 
 up:
 	docker-compose up -d
