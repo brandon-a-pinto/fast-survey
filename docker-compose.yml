@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  api:
+    container_name: api
+    env_file: .env
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+      - MONGO_DB_NAME=${MONGO_DB_NAME}
+    deploy:
+      mode: replicated
+      replicas: 1
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:5.0
+    restart: always
+    ports:
+      - "27017:27017"
+    deploy:
+      mode: replicated
+      replicas: 1
+    volumes:
+      - ./data:/data/db
